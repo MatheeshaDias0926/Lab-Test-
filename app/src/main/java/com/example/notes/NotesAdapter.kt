@@ -1,13 +1,15 @@
 package com.example.notes
 
 import android.content.Context
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.view.menu.MenuView.ItemView
 import androidx.recyclerview.widget.RecyclerView
 
-class NotesAdapter(private var notes: List<Note>,context:Context):RecyclerView.Adapter<NotesAdapter.NoteViewHolder> {
+class NotesAdapter(private var notes: List<Note>,context:Context):
+    RecyclerView.Adapter<NotesAdapter.NoteViewHolder>() {
 
     class NoteViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
 
@@ -16,15 +18,21 @@ class NotesAdapter(private var notes: List<Note>,context:Context):RecyclerView.A
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
-        TODO("Not yet implemented")
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.note_item,parent,false)
+        return NoteViewHolder(view)
     }
 
-    override fun getItemCount(): Int {
-        TODO("Not yet implemented")
-    }
+    override fun getItemCount(): Int = notes.size
+
 
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        val note = notes[position]
+        holder.titleTextView.text = note.title
+        holder.contentTextView.text = note.content
+    }
+    fun refreshData(newNotes:List<Note>){
+        notes = newNotes
+        notifyDataSetChanged()
     }
 
 }
