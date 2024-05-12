@@ -16,7 +16,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="16dp"
         android:fontFamily="sans-serif-black"
-        android:text="Add Note To List"
+        android:text="Add Note to List"
         android:textColor="@color/orange"
         android:textSize="24dp" />
 
@@ -34,7 +34,7 @@
         android:id="@+id/titleEdittext"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:hint="Enter the tittle of note"
+        android:hint="Enter the title of note"
         android:padding="12dp"
         android:textSize="20sp"
         android:layout_below="@id/addNoteHeading"
