@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -28,6 +29,22 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this,AddNoteActivity::class.java)
             startActivity(intent)
         }
+
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                if (!newText.isNullOrEmpty()) {
+                    val filteredNotes = db.getAllNotes().filter { it.title.contains(newText, true) }
+                    notesAdapter.refreshData(filteredNotes)
+                } else {
+                    notesAdapter.refreshData(db.getAllNotes())
+                }
+                return true
+            }
+        })
 
         }
 

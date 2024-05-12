@@ -19,6 +19,21 @@
         android:textColor="@color/orange"
         android:textSize="24dp"
         />
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchView"
+        android:layout_width="293dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/notesHeading"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginStart="117dp"
+        android:layout_marginTop="-42dp"
+        android:layout_marginEnd="1dp"
+        android:queryHint="Search notes..."
+        app:iconifiedByDefault="false" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/notesRecylerView"
         android:layout_width="match_parent"
